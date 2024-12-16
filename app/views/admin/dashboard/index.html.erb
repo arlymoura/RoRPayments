@@ -1,0 +1,55 @@
+<%= content_for :title, "Admin Dashboard" %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Admin Dashboard</h4>
+        </div>
+        <div class="card-body">
+
+          <!-- Pagamentos -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Payment ID</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Status</th>
+                <th scope="col">Tipo de pagamento</th>
+                <th scope="col">Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @payments.each do |payment| %>
+                <tr>
+                  <td><%= payment.external_id %></td>
+                  <td><%= number_to_currency(payment.amount) %></td>
+                  <td>
+                    <% case payment.status %>
+                    <% when 'approved' %>
+                      <span class="badge bg-success">Aprovado</span>
+                    <% when 'pending' %>
+                      <span class="badge bg-warning">Processando</span>
+                    <% when 'rejected' %>
+                      <span class="badge bg-danger">Rejeitado</span>
+                    <% else %>
+                      <span class="badge bg-secondary">Error</span>
+                    <% end %>
+                  </td>
+                  <td><%= payment.payment_method %></td>
+                  <td><%= payment.created_at.strftime('%B %d, %Y') %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <!-- No payments message -->
+          <% if @payments.empty? %>
+            <p>Sem pagamentos</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
