@@ -98,3 +98,6 @@ gem 'sidekiq'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+
+# Use Faraday to make HTTP requests
+gem 'faraday'
