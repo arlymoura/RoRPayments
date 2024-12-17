@@ -54,6 +54,12 @@ production:
   PS: Você pode colar no .env ou então editar as credenciais com o comando:
   ```rails credentials:edit```
 
+### Para acessar a lista de pagamentos:
+```bash
+User: email: "admin@admin.com", password: "123456"
+Rota:
+/admin/dashboard
+```
 
 ## Melhorias
 #### Implementando Work e Schedule para Verificação do Status de Pagamento
